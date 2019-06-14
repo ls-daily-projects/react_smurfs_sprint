@@ -14,8 +14,13 @@ class App extends Component {
     }
 
     async componentDidMount() {
-        const { data } = await axios.get("/smurfs")
-        this.setState({ ...this.state, smurfs: [...data] })
+        try {
+            const { data } = await axios.get("/smurfs")
+            this.setState({ ...this.state, smurfs: [...data] })
+        } catch (error) {
+            console.log(error)
+            alert(`Smurfs, bro. Couldn't load any of the little blue guys :(`)
+        }
     }
 
     render() {

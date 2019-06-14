@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
+import { withRouter } from "react-router-dom"
 
 class SmurfForm extends Component {
     constructor(props) {
@@ -29,11 +30,16 @@ class SmurfForm extends Component {
             console.log(error)
         }
 
-        this.setState({
-            name: "",
-            age: "",
-            height: ""
-        })
+        this.setState(
+            {
+                name: "",
+                age: "",
+                height: ""
+            },
+            () => {
+                this.props.history.push("/")
+            }
+        )
     }
 
     handleInputChange = e => {
@@ -69,4 +75,4 @@ class SmurfForm extends Component {
     }
 }
 
-export default SmurfForm
+export default withRouter(SmurfForm)

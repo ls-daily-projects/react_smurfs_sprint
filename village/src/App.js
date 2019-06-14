@@ -62,6 +62,7 @@ class App extends Component {
                             render={() => (
                                 <Smurfs
                                     didRemoveSmurf={this.updateSmurfs}
+                                    didUpdateSmurf={this.updateSmurfs}
                                     smurfs={this.state.smurfs}
                                 />
                             )}

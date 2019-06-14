@@ -59,7 +59,12 @@ class App extends Component {
                         <Route
                             exact
                             path="/"
-                            render={() => <Smurfs smurfs={this.state.smurfs} />}
+                            render={() => (
+                                <Smurfs
+                                    didRemoveSmurf={this.updateSmurfs}
+                                    smurfs={this.state.smurfs}
+                                />
+                            )}
                         />
                         <Route
                             path="/add-smurf"

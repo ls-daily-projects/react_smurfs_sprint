@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import axios from "axios"
 
 class SmurfForm extends Component {
     constructor(props) {
@@ -10,9 +11,23 @@ class SmurfForm extends Component {
         }
     }
 
-    addSmurf = event => {
+    addSmurf = async event => {
         event.preventDefault()
-        // add code to create the smurf using the api
+
+        const isFormValid =
+            this.state.name && this.state.age && this.state.height
+
+        if (!isFormValid) {
+            alert(`You've gotta be smurfin me, smurf.`)
+            return
+        }
+
+        try {
+            await axios.post("/smurfs", this.state)
+            this.props.formDidSubmit()
+        } catch (error) {
+            console.log(error)
+        }
 
         this.setState({
             name: "",
